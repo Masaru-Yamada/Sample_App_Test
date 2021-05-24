@@ -32,7 +32,7 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = true
+  config.action_mailer.raise_delivery_errors = false
 
   config.action_mailer.perform_caching = false
 
@@ -58,25 +58,15 @@ Rails.application.configure do
 
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
-  config.file_watcher = ActiveSupport::EventedFileUpdateChecker
-  
-  config.action_mailer.delivery_method = :smtp
-  host = 'nameless-savannah-84875.herokuapp.com'
-  #host = '2a81170deb6a49618874ade1e3369264.vfs.cloud9.ap-northeast-1.amazonaws.com'# ここをコピペすると失敗します。自分の環境のホストに変えてください。
+  config.file_watcher = ActiveSupport::EventedFileUpdateChecker  
+  #config.action_mailer.delivery_method = :smtp
+  #host = 'nameless-savannah-84875.herokuapp.com/'
+  host = '2a81170deb6a49618874ade1e3369264.vfs.cloud9.ap-northeast-1.amazonaws.com'# ここをコピペすると失敗します。自分の環境のホストに変えてください。
   # クラウドIDEの場合は以下をお使いください
-  #config.action_mailer.default_url_options = { host: host, protocol: 'https' }
-  config.action_mailer.default_url_options = { host: host }
-    ActionMailer::Base.smtp_settings = {
-    :port           => ENV['MAILGUN_SMTP_PORT'],
-    :address        => ENV['MAILGUN_SMTP_SERVER'],
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => host,
-    :authentication => :plain,
-  }
+  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+
   # localhostで開発している場合は以下をお使いください
   # config.action_mailer.default_url_options = { host: host, protocol: 'http' }
   
-    # Cloud9 への接続を許可する
-  config.hosts.clear
+
 end
