@@ -74,8 +74,8 @@ Rails.application.configure do
   host = 'nameless-savannah-84875.herokuapp.com'
   #host = '2a81170deb6a49618874ade1e3369264.vfs.cloud9.ap-northeast-1.amazonaws.com'# ここをコピペすると失敗します。自分の環境のホストに変えてください。
   # クラウドIDEの場合は以下をお使いください
-  onfig.action_mailer.default_url_options = { host: host, protocol: 'https' }
-  #config.action_mailer.default_url_options = { host: host }
+  #config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
     ActionMailer::Base.smtp_settings = {
     :port           => ENV['MAILGUN_SMTP_PORT'],
     :address        => ENV['MAILGUN_SMTP_SERVER'],
